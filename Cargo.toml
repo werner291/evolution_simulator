@@ -1,0 +1,18 @@
+[package]
+name = "evo_exp"
+version = "0.1.0"
+authors = ["Werner Kroneman <werner@wernerkroneman.nl>"]
+
+[dependencies]
+#sdl2 = "0.32.0"
+ndarray = "0.12.1"
+nalgebra = "0.16.13"
+rand = "0.4.3"
+chrono = "0.4"
+itertools = "0.8"
+spade = "1.6.0"
+generational-arena = "0.1"
+
+[dependencies.sdl2]
+version = "0.32.0"
+features = ["gfx"]
