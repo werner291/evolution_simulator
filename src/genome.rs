@@ -6,7 +6,7 @@ use crate::ffnn::FFNN;
 
 const MUTATION_RATE: f32 = 0.2;
 
-#[derive(Debug)]
+#[derive(Debug,Clone)]
 pub struct Genome {
     pub nodes: Vec<Vector2<f32>>,
     pub muscles: Vec<(usize, usize)>,
@@ -17,7 +17,9 @@ pub struct Genome {
 
 impl Genome {
     pub fn initial() -> Genome {
-        let nodes = vec![Vector2::new(-1.0, 1.0), Vector2::new( 0.0, 0.0), Vector2::new( 1.0, 0.0)];
+        let nodes = vec![Vector2::new(-1.0, 1.0),
+                         Vector2::new( 0.0, 0.0),
+                         Vector2::new( 1.0, 0.0)];
 
         let connections = vec![(0, 1), (1, 2), (2, 0)];
 
@@ -118,10 +120,10 @@ impl Genome {
         const BASE_MUT: f32 = 1.0;
         let mutation_coeff : f32 = BASE_MUT.powf(self.mutation_rate);
 
-        for node in self.nodes.iter_mut() {
-            node.x += rng.gen_range(-mutation_coeff, mutation_coeff);
-            node.y += rng.gen_range(-mutation_coeff, mutation_coeff);
-        }
+//        for node in self.nodes.iter_mut() {
+//            node.x += rng.gen_range(-mutation_coeff, mutation_coeff);
+//            node.y += rng.gen_range(-mutation_coeff, mutation_coeff);
+//        }
 
         self.brain.add_noise(MUTATION_RATE);
 
